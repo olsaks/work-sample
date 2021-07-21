@@ -1,0 +1,19 @@
+@import "../global/_parts.scss";
+
+._ {
+  position: relative;
+}
+
+.carousel {
+  width: 100%;
+  height: 125vw;
+  padding: 10px;
+  @include _minWidthTablet {
+    height: 50vw;
+    padding: 0 15px 15px 15px;
+  }
+}
+
+.filters {
+  padding: 0 20px;
+}

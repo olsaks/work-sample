@@ -1,0 +1,129 @@
+@import "../global/parts";
+
+.filters_desktop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 0;
+  @include _maxWidth($tablet) {
+    display: none;
+  }
+}
+.filters__filter {
+  position: relative;
+  color: white;
+  @include _baseFontMedium;
+  text-transform: uppercase;
+  margin-right: 30px;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 0 15px;
+  cursor: pointer;
+
+  &:last-child {
+    margin-right: 0;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: white;
+    transition: all 0.4s ease;
+  }
+  &:hover,
+  &.filters__filter_active {
+    &:after {
+      width: 100%;
+      transition: all 0.4s ease;
+    }
+  }
+  span {
+    position: absolute;
+    white-space: nowrap;
+    font-size: 10px;
+    color: $mediumDarkGrey;
+    @include _baseFontMedium;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -17px;
+  }
+}
+
+.filters_mobile {
+  text-align: center;
+  padding: 20px 0;
+  @include _minWidthTablet {
+    display: none;
+  }
+}
+.filters__activeFilter,
+.filters__filter_mobile {
+  @include _baseFontMedium;
+  text-transform: uppercase;
+  color: white;
+}
+.filters__filters_mobileContainer {
+  position: relative;
+  padding-top: 10px;
+}
+.filters__filters_mobile__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15px;
+}
+.filters__activeFilter {
+  border-bottom: 3px solid white;
+  display: block;
+  padding-bottom: 2px;
+  position: relative;
+  &:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 10px solid white;
+    position: absolute;
+    right: 4px;
+    bottom: 11px;
+  }
+}
+.filters__filter_mobile {
+  margin-bottom: 15px;
+  padding: 0 15px;
+  line-height: 1.3rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &.filters__filter_active {
+    border-bottom: 3px solid white;
+  }
+}
+
+//dark styles
+.dark {
+  .filters__filter,
+  .filters__activeFilter,
+  .filters__filter_mobile {
+    color: black;
+  }
+  .filters__filter {
+    &:after {
+      background: black;
+    }
+  }
+  .filters__activeFilter,
+  .filters__filter_mobile.filters__filter_active {
+    border-color: black;
+  }
+  .filters__activeFilter {
+    &:after {
+      border-top-color: black;
+    }
+  }
+}
